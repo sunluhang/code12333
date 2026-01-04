@@ -1,0 +1,62 @@
+Description
+利用公式，求出e的近似值，要求保留小数点后10位
+Input
+输入为一个整数n，1<=n<=15，表示计算e时累加到
+
+Output
+输出只有一行，为计算出来e的近似值。
+
+Sample Input
+10
+Sample Output
+2.7182818011
+
+
+
+
+
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    
+    double e = 1.0;  // 第一项
+    double term = 1.0;  // 当前项 1/i!
+    
+    for (int i = 1; i <= n; i++) {
+        term /= i;  // term从1/0!变成1/1!，再变成1/2!...，term/=i就是term=term/i
+        e += term;
+    }
+    
+    printf("%.10f\n", e);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+递归计算
+
+
+
+
+#include <stdio.h>
+
+double calc_e(int n, double term, int i) {
+    if (i > n) return 0;  // 终止条件
+    return term + calc_e(n, term / (i + 1), i + 1);
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    printf("%.10f\n", calc_e(n, 1.0, 0));
+    return 0;
+}
