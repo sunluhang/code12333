@@ -1,0 +1,9 @@
+#int <stdio.h>
+void tentotwo(int n){
+    if(n>1){
+        tentotwo(n/2);
+    }
+    printf("%d", n % 2);
+
+}
+十进制转二进制的代码
