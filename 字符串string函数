@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int n;
+    char str[1001]; 
+    scanf("%d", &n);
+    getchar(); 
+    for (int i = 1; i <= n; i++) {
+        fgets(str, sizeof(str), stdin);
+        str[strcspn(str, "\n")] = '\0';
+        int length = strlen(str);
+        printf("case %d:length=%d.\n", i, length);
+    }
+    
+    return 0;
+}
+求字符串长度，string函数包含字符数组，例如strlen函数计算字符串长度；
+char主要用于存储单个字符通常占一个字节
+getchard的作用就是读取单个字符并且返回该字符对应的ascll码
+fget用于从文件中安全的读取字符串，会保留换行符\n并且自动添加终止符\0确保是合法c字符串
+sizeof：要读取的最大字符数。stdin标准输入流
+strcspn返回第一个字符串中\n的索引位置
