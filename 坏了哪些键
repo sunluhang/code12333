@@ -1,0 +1,68 @@
+Description
+旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及实际被输入的文字，请你列出肯定坏掉的那些键。
+
+Input
+输入为多行，第一行给出应该输入的文字，后面的各行是实际被输入的文字。
+
+每段文字是不超过30000个字符的串，用字母A-Z（大小写）、数字0-9、以及下划线组成。
+
+题目保证输入的字符串均非空。
+
+Output
+每段实际被输入的文字，对应一行输出：按照发现顺序，在一行中输出坏掉的键。其中英文字母只输出大写，每个坏键只输出1次。
+
+题目保证至少有一个坏键。下划线不会是坏键。
+
+Sample Input
+7_This_is_a_test
+7_This_is__test
+_hs_s_a_es
+Sample Output
+A
+7TI
+
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int main() {
+    char expected[30010], actual[30010];
+    int printed[128] = {0};  // 标记是否已输出过大写字符
+    fgets(expected, sizeof(expected), stdin);
+    expected[strcspn(expected, "\n")] = 0;  // 去掉换行符
+    
+    while (fgets(actual, sizeof(actual), stdin)) {
+        actual[strcspn(actual, "\n")] = 0;
+        memset(printed, 0, sizeof(printed));  // 每行重置标记
+        
+        int i = 0, j = 0;
+        while (expected[i]) {
+            if (expected[i] == actual[j]) {
+                j++;
+            } else {
+                char c = expected[i];
+                if (c == '_') {  // 下划线不会是坏键
+                    i++;
+                    continue;
+                }
+                if (c >= 'a' && c <= 'z') c = toupper(c);
+                if (!printed[(int)c]) {
+                    putchar(c);
+                    printed[(int)c] = 1;
+                }
+            }
+            i++;
+        }
+        putchar('\n');
+    }
+    return 0;
+}
