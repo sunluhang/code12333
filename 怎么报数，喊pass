@@ -1,0 +1,73 @@
+Description
+大家一定都玩过报数游戏吧，若干人排成一排，从第1个人开始报数：1、2、3……。
+
+现在，假如你是第n个，主持人说一个数字k，如果n里面含有数字k或者n能被k整除，则要喊“过”，否则喊出数字n。
+
+如果喊错了，要表演节目的哦~~
+
+Input
+第一行是一个整数T(T<=100)，表示有多少个测试用例，后面每行是一个测试用例。每行有两个正整数n，k。（1<n<2^31,1<k<10）
+
+Output
+每个测试用例输出一行，表示你要喊出的内容，如果这个数能喊出，输出这个数；否则，输出“pass”（不带引号）
+
+Sample Input
+2 
+5 3
+123 3
+Sample Output
+5
+pass
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+int main() {
+    int T;
+    scanf("%d", &T);
+    
+    while(T--) {
+        int n, k;
+        scanf("%d %d", &n, &k);
+        
+        int should_pass = 0;  
+        
+      
+        if(n % k == 0) {
+            should_pass = 1;
+        }
+        
+        else {
+            int temp = n;  
+            while(temp > 0) {
+                int digit = temp % 10;  
+                if(digit == k) {
+                    should_pass = 1;
+                    break;  
+                }
+                temp /= 10;  
+            }
+        }
+        
+
+        if(should_pass) {
+            printf("pass\n");
+        } else {
+            printf("%d\n", n);
+        }
+    }
+    
+    return 0;
+}
+
+
+
+
+//不直接打印，先定义一个函数，如果符合这个函数就打印，不符合就不打印；
+if else的循环
