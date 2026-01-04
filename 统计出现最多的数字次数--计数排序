@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_K 200000  // k的最大值
+
+int main() {
+    int N, k;
+    int count[MAX_K + 1] = {0};  // 初始化计数数组为0
+    int max_count = 0;
+    
+    // 读取数字个数N
+    scanf("%d", &N);
+    
+    // 读取N个数字并统计
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &k);
+        count[k]++;  // 对应数字的计数加1
+        
+        // 更新最大出现次数
+        if (count[k] > max_count) {
+            max_count = count[k];
+        }
+    }
+每读入一个数字k，执行count[k]++
+
+同时更新max_count记录当前最大出现次数
+    
+    // 输出出现次数最多的数字的个数
+    printf("%d\n", max_count);
+    
+    return 0;
+}
