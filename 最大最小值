@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+    int max, min;
+    
+    scanf("%d %d %d", &a, &b, &c);
+    
+    // 找最大值
+    max = a;
+    if (b > max) max = b;
+    if (c > max) max = c;
+    
+    // 找最小值
+    min = a;
+    if (b < min) min = b;
+    if (c < min) min = c;
+    
+    printf("The maximum number is : %d\n", max);
+    printf("The minimum number is : %d\n", min);
+    
+    return 0;
+}
+
+
+
+
+
+为什么这样改更好？
+
+逻辑简单，不易出错
+
+正确处理了相等的情况
+
+代码清晰，易于维护
