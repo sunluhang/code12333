@@ -1,0 +1,74 @@
+从标准输入上读入正整数 n，使用递归函数逆序输出 n 的各位数字。逆序后不输出前导 0。
+
+禁用关键字：for、while。
+
+Input
+一行，一个正整数 n。保证在 int 范围内。
+
+Output
+一行，一个整数，表示翻转之后的 n。
+
+Sample Input
+123
+Sample Output
+321
+
+
+
+
+#include<stdio.h>
+int flag=0;  // 全局变量，标记是否已经开始输出非0数字
+void inverse(int n)  // 递归函数
+{
+    if(n%10==0 && flag==0)  // 情况1：当前位是0且还没开始输出
+    {
+        return inverse(n/10);  // 跳过这个0，继续递归
+    }
+    else if(n%10==0 && flag==1)  // 情况2：当前位是0但已经开始输出
+    {
+        printf("%d",n%10);  // 输出0
+        return inverse(n/10);  // 继续递归
+    }
+    else  // 情况3：当前位不是0
+    {
+        flag=1;  // 标记已经开始输出
+        printf("%d",n%10);  // 输出当前位
+        if(n/10!=0)  // 如果还有高位
+            return inverse(n/10);  // 继续递归
+    }   
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    inverse(n);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+如果是给定几位数，并且前置零不省略，则可以用数组来进行；
+例如进行一个四位数的倒序排列，并且零不省略；
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[5];  // 四位数字符串，预留一位给结束符'\0'
+    scanf("%s", s);
+    
+    // 反转输出
+    for (int i = 3; i >= 0; i--) {
+        printf("%c", s[i]);
+    }
+    
+    return 0;
+}
+    
