@@ -1,0 +1,23 @@
+向上取整就是把一个数向上取到最近的整数，也就是比原数大或相等的最小整数；
+Input
+两个正整数i, j，i是被除数，j是除数
+
+Output
+一个整数
+
+
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    scanf("%d %d", &i, &j);
+    
+    // 向上取整公式
+    int result = (i + j - 1) / j;
+    
+    printf("%d\n", result);
+    return 0;
+}
+
+
+向上取整的公式就是被除数加上除数减一再除以除数
