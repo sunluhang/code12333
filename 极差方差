@@ -1,0 +1,50 @@
+第一行输入一个整数 
+T
+
+接下来 
+2T 行，按如下格式给出每张试卷数据
+由于作业量极大，请你帮助牛牛快速计算每张试卷的极差和方差
+
+#include <stdio.h>
+
+int main() {
+    int T;
+    scanf("%d", &T);
+    
+    while (T--) {
+        int n;
+        scanf("%d", &n);
+        
+        long long first;
+        scanf("%lld", &first);
+        
+        long long max_val = first;  // 用第一个数初始化
+        long long min_val = first;
+        long long sum = first;
+        
+        // 数组存储，用于方差计算
+        long long arr[n];  // 变长数组，C99支持
+        arr[0] = first;
+        
+        for (int i = 1; i < n; i++) {
+            scanf("%lld", &arr[i]);
+            if (arr[i] > max_val) max_val = arr[i];
+            if (arr[i] < min_val) min_val = arr[i];
+            sum += arr[i];
+        }
+        
+        long long range = max_val - min_val;
+        double mean = (double)sum / n;
+        
+        double variance = 0.0;
+        for (int i = 0; i < n; i++) {
+            double diff = (double)arr[i] - mean;
+            variance += diff * diff;
+        }
+        variance /= n;
+        
+        printf("%lld %.3lf\n", range, variance);
+    }
+    
+    return 0;
+}
