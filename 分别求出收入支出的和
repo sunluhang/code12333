@@ -1,0 +1,24 @@
+简单记帐时用收入记为正数，支出记为负数，现在要求出收入总和和支出总和
+样例：
+5
+100 20 -50 200 -400
+输出：
+320 -450
+#include <stdio.h>
+int main(){
+    int n,num;
+    int income = 0,outcome = 0;
+    scanf("%d",&n);
+    for(int i = 0;i<n;i++){
+    scanf("%d",&num); 
+    if(num>0){
+        income+=num;
+    }    
+    if(num<=0){
+        outcome+=num;
+    }}
+    printf("%d %d\n",income,outcome);
+    return 0;
+
+}
+用if对输入的数分类，大于零就置换到income；否则就置换outcome;
