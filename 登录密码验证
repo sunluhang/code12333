@@ -1,0 +1,110 @@
+Description
+编写一个程序，模拟用户登录系统的密码验证过程。系统提供给用户的密码长度最长为20个字符，若密码输入错误可以再次输入。但为了保证用户密码安全，若连续输入密码错误超过5次就会锁定账号一段时间。
+
+Input
+输入为若干个串，至EOF结束。输入的第一个串是用户的正确密码，后面的串为模拟用户登录时的输入的密码。
+
+Output
+每次输入错误的密码，输出一个“Wrong!”，若输入的密码为正确的，输出一个“Welcome!”，并结束密码测试。若前5次输入的密码都是错误的，则后面的输入中不管是否有正确的密码都输出“Out of limited!”。
+
+Sample Input
+abcdefg
+123456 kkkkkkkk abcdefg
+Sample Output
+Wrong!
+Wrong!
+Welcome!
+HINT
+输入可以用scanf("%s")处理，密码比较用字符串的比较可以完成。
+
+
+
+
+
+
+
+
+
+错误代码（自己编）：#include <stdio.h>
+#include <string.h>
+int main(){
+    char key,str[25];
+    scanf("%s",key);
+    while(fgets(str,25,stdin)!=NULL){
+        
+        for(int i=0;i<5;i++){
+        scanf("%s",str);
+        if(key==str){
+            printf("Welcome!");
+            }
+            break;
+        else{
+            printf("Wrong!");
+        
+         }
+        }
+         
+    }
+    return 0;
+}
+
+1. 变量定义错误
+c
+下载
+复制
+运行
+char key,str[25];  // key应该是字符串，不是单个字符
+scanf("%s",key);   // 错误：key是char，不是数组
+2. 循环逻辑错误
+
+外层while(fgets...)和内层for(i=0;i<5;i++)循环冲突
+
+scanf("%s",str)在循环中重复使用，会覆盖之前的输入
+
+3. 字符串比较错误
+c
+下载
+复制
+运行
+if(key==str)        // 错误：比较的是地址，不是内容
+
+应该使用strcmp()函数
+
+4. 缺少错误次数计数
+
+没有记录连续错误的次数
+
+没有处理5次错误后的"Out of limited!"
+
+5. 输入处理混乱
+
+混合使用scanf和fgets，容易导致缓冲区问题
+
+
+
+
+
+
+正确：
+  #include <stdio.h>
+#include <string.h>
+int main()
+{
+	int i;
+	char password[21],in[21];
+	scanf("%s",password);
+	for(i=0;i<5;i++)
+	{
+		scanf("%s",in);
+		if(strcmp(password,in)==0)
+		{
+			printf("Welcome!\n");
+			break;
+		}
+		else
+			printf("Wrong!\n");
+	}
+	while(scanf("%s",in)!=EOF&&i==5)
+		printf("Out of limited!\n");
+	return 0;
+}
