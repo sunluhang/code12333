@@ -1,0 +1,45 @@
+输出一个m行n列的矩形，m和n均大于2，只有四边输出“*”，矩形中间输出空格。
+例如，最小的矩形是：
+***
+* *
+***
+         请根据“Append Code”完成程序。append.c中调用了一个函数print ()。用C语言或C++编写自定义类型和函数实现，函数的原型为：
+                  int print(int m, int n);
+                   功能：输出一个m行n列的矩形。
+        
+Input
+输入为两个整数m和n。
+Output
+输出一个m行n列的矩形
+Sample Input
+4 5
+Sample Output
+*****
+*   *
+*   *
+*****
+
+
+
+
+
+
+#include <stdio.h>
+
+int print(int m, int n) {
+    for (int i = 0; i < m; i++) {        // 遍历每一行
+        for (int j = 0; j < n; j++) {    // 遍历每一列
+            if (i == 0 || i == m - 1 || j == 0 || j == n - 1)             //if (i == 0 || i == m - 1 || j == 0 || j == n - 1)这个条件判断语句是用来判断当前输出位置是否在矩形的边界上。
+            {
+                // 在边界上，输出 *
+                printf("*");
+            } else {
+                // 在中间部分，输出空格
+                printf(" ");
+            }
+        }
+        // 每行结束后换行
+        printf("\n");
+    }
+    return 0;
+}
