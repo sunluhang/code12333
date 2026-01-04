@@ -1,0 +1,11 @@
+#include <stdio.h>
+int main() {
+int n,m;
+scanf("%d %d", &m, &n);
+    double percentage = (double)n / m * 100;
+    printf("%.4lf%%\n", percentage);
+return 0;
+}
+%.4lf：输出double类型，保留4位小数
+如果直接写m/n会进行整数除法，结果会被截断为整数
+%%：输出百分号%
