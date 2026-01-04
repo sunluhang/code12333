@@ -1,0 +1,86 @@
+Description
+我们知道，5/3=1+2/3，称等号后面的式子为最简分式。也就是说，在分式中，分子一定要小于分母，而且分子、分母是互质的。请写一个程序，对于用户输入的一个合法分式，输出其约简之后的结果。
+
+Input
+输入有多行，每行是“m/n”的格式表示的一个分式，其中m和n都是int类型范围内的正整数。
+
+输入至EOF结束。
+
+Output
+输出的行数与输入一致，且每行输出与上述输入一一对应。
+
+如果约简后，分子部分是0，则只输出整数部分。
+
+如果整数部分是0，则按照“j/k”的格式输出；
+
+如果整数部分不是0，则按照“i+j/k” 的格式输出约简后的结果。
+
+其中i、j和k分别是约简后的整数部分、分子部分和分母部分。
+
+Sample Input
+100/56
+8/4
+3/5
+Sample Output
+1+11/14
+2
+3/5
+
+
+
+
+#include <stdio.h>
+
+int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
+
+int main() {
+    int m, n;
+    while (scanf("%d/%d", &m, &n) != EOF) {
+        int integer = m / n;           
+        int remain = m % n;           
+
+        if (remain == 0) {
+            
+            printf("%d\n", integer);
+        } else {
+            
+            int g = gcd(remain, n);//最大公约数
+            int j = remain / g;        //分子
+            int k = n / g;             //分母
+            if (integer == 0) {
+                printf("%d/%d\n", j, k);
+            } else {
+                printf("%d+%d/%d\n", integer, j, k);
+            }
+        }
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 求最大公约数，用于约分
+int gcd(int a, int b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
+}
