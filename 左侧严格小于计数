@@ -1,0 +1,40 @@
+给定长度为n的整数a1,a2,a3.....an，定义结果序列b;第i个元素bi定义为：a1到ai中，小于ai的数字数量。计算并输出序列b1,b2..bn。
+输入：
+5
+1 2 3 4 5
+0 1 2 3 4
+
+
+#include <stdio.h>
+
+int main() {
+    int a[101];
+    int n;
+    int b[101];
+    scanf("%d",&n);
+    
+    for(int i=0;i<n;i++){
+        scanf("%d",&a[i]);}//输入a[i]
+    for(int i=0;i<n;i++){
+        int count=0;
+        for(int j=0;j<i;j++){
+            if(a[i]>a[j]){
+                count++;
+            }
+        }//统计次数；
+        b[i]=count;
+    }  
+    for(int i=0;i<n;i++){
+        printf("%d",b[i]);//输出次数并输出空格；
+        if(i<n-1){
+            printf(" ");
+        }
+    }
+    printf("\n");//输出换行符；
+
+
+
+    
+    
+    return 0;
+}
