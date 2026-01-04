@@ -1,0 +1,153 @@
+1
+#stdio <math.h>
+//如果需要以下计算，就需要 #include <math.h>：
+
+开方：sqrt()
+
+幂运算：pow()
+
+三角函数：sin(), cos(), tan()
+
+对数：log(), log10()
+
+绝对值：fabs()（浮点数）或 abs()（整数在 <stdlib.h>）//
+
+
+
+
+2
+void表示函数不返回任何值；
+
+inverse​ 是“逆、反、倒数、反函数、反转、求逆”等含义
+组合起来 void inverse可以理解为：
+
+一个名为 inverse 的函数，它的功能是求某个东西的“逆”（比如矩阵求逆、数值倒数、顺序反转等），但它不会返回结果，而是通过修改传入的参数或对象内部状态来完成任务。
+
+
+
+3
+#include <string.h>
+这个头文件提供了处理字符串和内存操作的函数。
+例如1）字符串复制：
+char str1[20], str2[] = "Hello";
+strcpy(str1, str2);  // 复制：str1 = "Hello"
+strncpy(str1, str2, 3);  // 只复制前3个复制；
+2）字符串连接
+char str[20] = "Hello";
+strcat(str, " World");  // 连接：str = "Hello World"
+strncat(str, "!!!", 2);  // 只连接前2个字符
+3）字符串比较
+if (strcmp(str1, str2) == 0) {
+    // 两个字符串相等
+}
+if (strncmp(str1, str2, 3) == 0) {
+    // 前3个字符相等
+}
+4）字符串长度
+int len = strlen("Hello");  // len = 5
+5）字符串查找
+char str[] = "hello world";
+char *p = strchr(str, 'o');  // 查找字符'o'
+char *p2 = strstr(str, "world");  // 查找子串"world"
+6）字符串分割
+char str[] = "apple,banana,orange";
+char *token = strtok(str, ",");  // 第一次调用，得到"apple"
+token = strtok(NULL, ",");       // 第二次调用，得到"banana"
+token = strtok(NULL, ",");       // 第三次调用，得到"orange"
+7）甚至内存调用
+char str1[20], str2[] = "Hello";
+memcpy(str1, str2, 6);  // 复制内存（包括'\0'）
+memset(str1, 0, 20);    // 全部设为0
+
+
+
+
+
+4 #include <ctype.h>
+#include <ctype.h>是C语言的字符类型判断和转换头文件，它包含了许多用于判断和转换字符类型的函数。
+
+1)字符类型转换
+// 判断是否为数字字符 '0'-'9'
+if (isdigit('5')) {  // 返回真
+    // 是数字
+}
+// 判断是否为字母 'a'-'z' 或 'A'-'Z'
+if (isalpha('A')) {  // 返回真
+    // 是字母
+}// 判断是否为字母或数字
+if (isalnum('a')) {  // 返回真
+    // 是字母或数字
+}
+// 判断是否为小写字母
+if (islower('a')) {  // 返回真
+    // 是小写字母
+}
+// 判断是否为大写字母
+if (isupper('A')) {  // 返回真
+    // 是大写字母
+}
+// 判断是否为空白字符（空格、制表符、换行符等）
+if (isspace(' ')) {  // 返回真
+    // 是空白字符
+}
+
+2）字符大小写转换
+char c1 = 'a';
+char c2 = toupper(c1);  // c2 = 'A'，小写转大写
+
+char c3 = 'B';
+char c4 = tolower(c3);  // c4 = 'b'，大写转小写
+
+
+
+
+5isPalindrome
+isPalindrome就是一个检查回文数的函数，它：
+1).
+接收一个整数参数
+2).
+如果是负数，直接返回0（不是回文）
+3).
+否则反转数字
+4).
+比较原数字和反转后的数字是否相等
+5).
+返回1（是回文）或0（不是回文）
+
+
+
+
+
+
+
+
+
+
+
+6
+#include <stdlib.h>
+当你需要在程序运行时动态分配内存（不知道需要多少内存，或数据大小会变化）
+需要对数组/数据进行快速排序时
+需要生成随机数时
+ 需要类型转换时
+需要程序控制时
+需要数学运算时
+需要在数组中查找时
+
+即用到 malloc、free（动态内存）
+用到 qsort、bsearch（排序查找）
+用到 rand、srand（随机数）
+用到 atoi、atof（字符串转数字）
+用到 exit、system（程序控制
+
+
+
+
+
+7
+int compare(const void *a, const void *b) {
+    return (*(int*)b - *(int*)a);
+}
+
+
+从大到小排序
