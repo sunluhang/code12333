@@ -1,0 +1,56 @@
+定义函数
+char next(char ch);
+求英文字母ch的下一个字母。其中ch是一个英文字母，如果ch是小写字母z或者大写字母Z，则返回a或者A。
+
+Input
+输入分2行，第一行是一个正整数m，表示后面有m个英文字母。
+第2行是m个英文字母。
+
+Output
+
+输出m个英文字母，每个输入对应一个输出。
+
+Sample Input
+4
+AbZc
+Sample Output
+BcAd
+
+
+
+
+
+#include <stdio.h>
+ char next(char ch){  //char定义字符串
+    if(ch>='a'&&ch<='z'){
+       if(ch=='z'){
+        return 'a';//' '为单个字母“ ”为字符串
+       }
+         else{
+          return ch+1;
+         }
+    }
+    if(ch>='A'&&ch<='Z'){
+        if(ch=='Z'){
+            return 'A';
+        }
+        else{
+            return ch+1;
+        }
+    }
+    else{
+        return ch;//如果输入的不是字母则返回
+    }
+ }
+int main()
+{
+    int m, i;
+    char ch;
+    scanf("%d",&m);
+    getchar();
+    for(i=0;i<m;i++){
+        ch=getchar();
+        putchar(next(ch));
+    }
+    return 0;
+}
