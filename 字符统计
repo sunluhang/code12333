@@ -1,0 +1,68 @@
+给出一篇英文文章，含大小写字母、数字、标点符号和空白符等，统计其中各个英文字母出现的次数和各类字符出现的次数。
+
+统计各类字符时，应使用头文件<ctype.h>中的字符分类函数。这里用到以下5个函数：
+
+islower(c) c是否小写字母：'a'～'z'；
+isupper(c) c是否大写字母：'A'～'Z'；
+isdigit(c) c是否数字：'0'～'9'；
+isspace(c) c是否空白字符：包括空格（' '）、换页符（'\f'）、换行符（'\n'）、回车符（'\r'）、水平制表符（'\t'）和垂直制表符（'\v'）；
+ispunct(c) c是否标点符号：标点符号包括除字母、数字和空白符之外的所有可打印字符，也就是说输入的所有字符减去以上4类字符数正好是标点符号数。（仅限C99）
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+int main(){
+    int ch;
+    int total=0,lowers=0,uppers=0,digits=0,spaces=0,puncts=0;
+    int count[26]={0};
+    while((ch=getchar())!=EOF){//getchar()- 标准库函数，从标准输入读取一个字符,ch = getchar()- 将读取的字符赋值给变量ch
+        total++;
+        if(islower(ch)){
+            lowers++;
+            count[ch-'a']++;
+        }
+        else if(isupper(ch)){
+            uppers++;
+            count[ch-'A']++;
+        }
+        else if(isdigit(ch)){
+            digits++;
+
+        }
+        else if(isspace(ch)){
+            spaces++;
+
+        }
+        else if(ispunct(ch)){
+            puncts++;
+        }
+    }
+    printf("All Characters : %d\n",total);
+    printf("Lowers : %d\n",lowers);
+    printf("Uppers : %d\n",uppers);
+    printf("Digits : %d\n",digits);
+    printf("Spaces : %d\n",spaces);
+    printf("Puncts : %d\n",puncts);
+    for(int i=0;i<26;i++)
+    {
+        printf("%c : %d\n",'A'+i,count[i]);
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+//for(int i=0;i<26;i++)
+    {
+        printf("%c : %d\n",'A'+i,count[i]);
+    }遍历打印字母A-Z//
