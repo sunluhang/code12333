@@ -1,0 +1,179 @@
+Description
+“回文（Palindrome）”是指一个串和它的倒序串完全一样，例如“文言文”、“上海在海上”、“妈妈爱我，我爱妈妈”就是回文。
+
+接下来，你要编写一个程序来判断一个数字是不是回文数字。
+
+Input
+输入为多行，至EOF结束。每行包含一个int范围内的整数k。
+
+Output
+每行输出与输入相对应，若该行输入的数字是回文，即输出“Yes.”；否则输出“No.”。
+
+Sample Input
+10
+11
+101
+Sample Output
+No.
+Yes.
+Yes.
+
+
+
+#include <stdio.h>
+int isPalindrome(int n){//判断是不是回文
+    if(n<0) return 0;//负数不是回文
+    if(n==0) return 1;//零是回文
+    int original = n;//保存原始值用于比较
+    int reversed = 0;//reversed 反转，初始化反转值为零
+    while(n>0){  //当n大于零时循环
+        reversed = reversed*10 + n%10;//核心算法，使上一个反转值进一位，各位是n取余
+        n /= 10;
+    }
+    return original == reversed;//当反转值等于原始值
+
+}
+int main(){
+int k;
+while(scanf("%d",&k)!=EOF){
+    if(isPalindrome(k)){
+        printf("Yes.\n");
+    }else{
+        printf("No.\n");
+    }
+}
+   return 0;
+    
+}
+
+
+反转过程详解（以12321为例）
+
+初始状态：
+
+n = 12321
+
+reversed = 0
+
+第1轮循环：
+n % 10 = 1  (取最后一位)
+reversed = 0×10 + 1 = 1
+n = n / 10 = 1232
+
+第2轮循环：
+n % 10 = 2
+reversed = 1×10 + 2 = 12
+n = 1232 / 10 = 123
+
+第3轮循环：
+n % 10 = 3
+reversed = 12×10 + 3 = 123
+n = 123 / 10 = 12
+
+第4轮循环：
+n % 10 = 2
+reversed = 123×10 + 2 = 1232
+n = 12 / 10 = 1
+
+第5轮循环：
+n % 10 = 1
+reversed = 1232×10 + 1 = 12321
+n = 1 / 10 = 0
+
+循环结束，得到reversed = 12321
+
+第四步：比较并返回结果
+return original == reversed;  // 比较原数和反转后的数
+
+如果相等，返回1（真，是回文）
+
+如果不相等，返回0（假，不是回文）Description
+“回文（Palindrome）”是指一个串和它的倒序串完全一样，例如“文言文”、“上海在海上”、“妈妈爱我，我爱妈妈”就是回文。
+
+接下来，你要编写一个程序来判断一个数字是不是回文数字。
+
+Input
+输入为多行，至EOF结束。每行包含一个int范围内的整数k。
+
+Output
+每行输出与输入相对应，若该行输入的数字是回文，即输出“Yes.”；否则输出“No.”。
+
+Sample Input
+10
+11
+101
+Sample Output
+No.
+Yes.
+Yes.
+
+
+
+#include <stdio.h>
+int isPalindrome(int n){//判断是不是回文
+    if(n<0) return 0;//负数不是回文
+    if(n==0) return 1;//零是回文
+    int original = n;//保存原始值用于比较
+    int reversed = 0;//reversed 反转，初始化反转值为零
+    while(n>0){  //当n大于零时循环
+        reversed = reversed*10 + n%10;//核心算法，使上一个反转值进一位，各位是n取余
+        n /= 10;
+    }
+    return original == reversed;//当反转值等于原始值
+
+}
+int main(){
+int k;
+while(scanf("%d",&k)!=EOF){
+    if(isPalindrome(k)){
+        printf("Yes.\n");
+    }else{
+        printf("No.\n");
+    }
+}
+   return 0;
+    
+}
+
+
+反转过程详解（以12321为例）
+
+初始状态：
+
+n = 12321
+
+reversed = 0
+
+第1轮循环：
+n % 10 = 1  (取最后一位)
+reversed = 0×10 + 1 = 1
+n = n / 10 = 1232
+
+第2轮循环：
+n % 10 = 2
+reversed = 1×10 + 2 = 12
+n = 1232 / 10 = 123
+
+第3轮循环：
+n % 10 = 3
+reversed = 12×10 + 3 = 123
+n = 123 / 10 = 12
+
+第4轮循环：
+n % 10 = 2
+reversed = 123×10 + 2 = 1232
+n = 12 / 10 = 1
+
+第5轮循环：
+n % 10 = 1
+reversed = 1232×10 + 1 = 12321
+n = 1 / 10 = 0
+
+循环结束，得到reversed = 12321
+
+第四步：比较并返回结果
+return original == reversed;  // 比较原数和反转后的数
+
+如果相等，返回1（真，是回文）
+
+如果不相等，返回0（假，不是回文）
