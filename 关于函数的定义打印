@@ -1,0 +1,16 @@
+编写一个函数：
+
+int nearest(int n);
+
+
+#include <stdio.h>
+int nearest(int n){
+if(n%2==0)
+    return n;
+if(n%2!=0){
+    return n-1;
+}
+
+用于求不大于n的最大偶数，并作为函数的返回值进行返回
+在这个函数中应该是直接返回结果而不是打印
+因为是编写一个函数用于int  main所以不应该是打印printf，而是用return 返回n的值
