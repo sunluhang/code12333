@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int M;
+    char N[101];  // 存储最多100位的数字字符串
+    
+    // 读取测试用例数量M
+    scanf("%d", &M);
+    
+    // 处理M个测试用例
+    for (int i = 0; i < M; i++) {
+        scanf("%s", N);  // 以字符串形式读取大数
+        
+        int sum = 0;
+        int len = strlen(N);
+        
+        // 计算各位数字之和
+        for (int j = 0; j < len; j++) {
+            sum += (N[j] - '0');  // 将字符转换为数字并累加
+        }
+        
+        // 判断各位和能否被3整除
+        if (sum % 3 == 0) {
+            printf("Yes\n");
+        } else {
+            printf("No\n");
+        }
+    }
+    
+    return 0;
+}
+sum+=x等于sum=sum+x;
+N[j]就是N字符串中的第j个元素，例如如果字符串 N是 "123"，那么 N[0]是字符 '1'；
+- '0'： 这是整个操作的核心，用于字符到整数的转换
+把一个数存入到N中，然后通过For循环来挨个数位相加，得出和。整除3
