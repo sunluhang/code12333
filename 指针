@@ -1,0 +1,37 @@
+int* pa;
+pa=&a;
+printf("%d",*pa);
+char cha='A';
+char* pha==&cha;
+printf("%d".sizeof(cha));
+首地址就是地址名；
+//int i,*pa,a[11]={0,1,2,3,4,5,6,7,8,9};
+pa=a;
+for(int i=0;i<10;i++)
+{
+    printf("%d",pa[i]);}
+
+
+
+
+\\int My_strlen(char* p)等价于(char p[])
+{char* ps=s;
+while(*p!='0\n'){p++};
+}
+inr main(){
+char s[101];
+gets(s);
+int len=My_strlen(s);
+printf("%d",len);
+}
+
+
+
+
+
+
+
+
+
+int a=5,b=9;
+swap(a,b);//交换a,b;
