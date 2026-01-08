@@ -1,0 +1,117 @@
+指针还是数组？
+数组：这个字符串在这里
+    ：作为本地变量空间自动被回收
+指针：这个字符串不知道在哪里  
+    处理参数；
+    自动分配空间
+也就是说如果要构造一个字符串用数组；
+要处理一个字符串用指针；
+
+
+
+
+char*是字符串？
+不确切
+字符串可以表达为char*的形式
+char*不一定是字符串；
+    本意是指向字符的指针，可能指向的是字符的数组（就像int*一样）
+    只有它所指的字符数组有结尾的0，才能说他所指的是字符串
+
+
+字符串赋值
+char*t="title";
+char*s;
+s=t;
+并没有产生新的字符串，只是让指针s指向了t所指的字符串，对s的任何操作就是对t做的
+
+
+
+
+
+字符串输入输出：
+char string[8];
+scanf("%s",string);
+printf("%s",string);
+scanf读入一个单词（到空格、tab或回车为止)
+scanf是不安全的，因为不知道要读入的内容的7长度；
+#include <stdio.h>
+int main(void)
+{
+    char word[8];
+    scanf("%7s", word);
+    printf("%7s\n",word);//7在这里是最多读七个，这样更安全
+    return 0;
+}
+
+
+
+常见错误：
+char *string;
+scanf("%s",string);
+以为char*是字符串类型，定义了一个字符串类型的变量string就可以直接使用了；
+由于没有对sting初始化为0，所以不一定能够每次运行都出错；
+
+
+空字符串：
+char buffer[100]="";
+这是一个空的字符串，Buffer[0]=='\0'
+char buffer[]="";
+这个数组的长度只有1！
+
+字符串数组：
+char **a
+a是一个指针，指向另一个指针，那个指针指向一个字符（串）
+char a[][]
+
+
+
+
+putchar
+int putchar(intc)
+向标准输出写一个字符
+返回写了几个字符，EOF（-1)表示写失败
+
+
+getchar
+int getchar(void);
+从标准输入读入一个字符
+返回类型是Int是为了返回EOF（-1）
+
+
+
+string.h:
+  strlen
+size_t strlen(const char *s);
+返回s的字符串长度（不包括结尾的0）；
+  strcmp
+int strcmp(const char *s1,const char *s2);
+比较两个字符串，返回：
+0：s1==s2
+1:s1>s2
+-1:s1<s2
+
+
+
+strcpy:
+char *strcpy(char *restrict dst,const char *retrict src);
+把src的字符串拷贝到dst
+  restrict表明src和dst不重叠；
+返回dst 
+  为了能链起代码来
+复制一个字符串
+char *dst = (char*)malloc(strlen(src)+1);
+strcpy(dst,src);
+
+字符串中找字符
+char *strchr(const chat *s,int c);
+char * strrchr(const char *s,int c);
+返回NULL表示没有找到 
+如何寻找第二个？malloc
+字符串中找字符串
+char *strstr(const char *s1,const char *s2);
+char * strcasestr(const char *s1,const char *s2);//不区分大小写
+
+
+    
+
+
