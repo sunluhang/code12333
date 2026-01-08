@@ -126,3 +126,8 @@ int *const p3 = &i;
 函数返回不止一个结果；
 需要用函数来修改不止一个变量；
 动态申请内存：
+malloc;
+#include <stdlib.h>
+void *malloc(size_t size);
+向malloc申请的空间的大小是以字节为单位的
+最后要用free释放（）
